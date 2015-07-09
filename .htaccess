@@ -1,0 +1,9 @@
+#Force www:
+RewriteEngine on
+RewriteCond %{HTTP_HOST} ^http://52.11.19.198/ [NC]
+RewriteRule ^(.*)$ http://www.yoursite.com/$1 [L,R=301,NC]
+
+#--- Rewrite PHP files clean URL
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule ^([A-Za-z0-9-]+)$ ?page=$1 [NC,L]
+RewriteRule ^([A-Za-z0-9-]+)/([A-Za-z0-9-]+)$ ?page=$1&id=$2 [NC,L]
